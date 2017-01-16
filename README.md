@@ -31,6 +31,8 @@ contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
 
 ## TODOs
 
+- [x] Search for contacts by email
+- [x] VCR for tests
 - [ ] Search with other attributes
 - [ ] Add contact
 - [ ] Update contact
@@ -42,5 +44,4 @@ contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
 - [ ] Stop campaign
 - [ ] More complete documentation
 - [ ] Publish for PIP
-- [ ] VCR for tests?
-- [ ] Docstrings?
+- [ ] Docstrings
