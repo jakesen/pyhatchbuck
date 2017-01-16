@@ -1,9 +1,15 @@
+from .primatives import ApiObject, ApiStringAttribute, ApiObjectList
 
-class ApiObject(object):
+class Email(ApiObject):
+    address = ApiStringAttribute()
+    type = ApiStringAttribute()
 
-    def __init__(self, json_data):
-        for k, v in json_data.iteritems():
-            setattr(self, k, v)
+class User(ApiObject):
+    username = ApiStringAttribute()
+    id = ApiStringAttribute()
 
 class Contact(ApiObject):
-    ahhhh = None
+    firstName = ApiStringAttribute()
+    lastName = ApiStringAttribute()
+    salesRep = User()
+    emails = ApiObjectList(Email)

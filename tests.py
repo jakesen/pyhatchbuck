@@ -12,6 +12,12 @@ class TestApiCommands(unittest.TestCase):
         hatchbuck = HatchbuckAPI(self.test_api_key)
         contacts, found = hatchbuck.search_contacts("jack@pyhatchbuck.net")
         self.assertEqual(found, True)
+        self.assertEqual(contacts[0].firstName, "Jack")
+        self.assertEqual(contacts[0].lastName, "Spratt")
+        self.assertEqual(contacts[0].salesRep.username, "jakesen")
+        self.assertEqual(contacts[0].emails[0].address, "jack@pyhatchbuck.net")
+        self.assertEqual(contacts[0].emails[0].type, "Work")
+
 
     def test_search_by_email_with_no_results(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
