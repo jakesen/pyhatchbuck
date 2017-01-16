@@ -9,6 +9,10 @@ class ApiObject(object):
                         setattr(self, k, ApiObjectList(object_attr.object_class, v))
                     elif isinstance(object_attr, ApiStringAttribute):
                         setattr(self, k, ApiStringAttribute(v))
+                    elif isinstance(object_attr, ApiListAttribute):
+                        setattr(self, k, ApiListAttribute(v))
+                    elif isinstance(object_attr, ApiBooleanAttribute):
+                        setattr(self, k, v)
                     elif isinstance(object_attr, ApiObject):
                         setattr(self, k, type(object_attr)(v))
 
@@ -16,6 +20,14 @@ class ApiStringAttribute(str):
 
     def __init__(self, value=None):
         super(ApiStringAttribute, self).__init__(value)
+
+class ApiListAttribute(list):
+
+    def __init__(self, value=[]):
+        super(ApiListAttribute, self).__init__(value)
+
+class ApiBooleanAttribute(object):
+    pass
 
 class ApiObjectList(list):
 
