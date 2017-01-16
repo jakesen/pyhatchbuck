@@ -8,6 +8,6 @@ setup(
     author='Jacob Senecal',
     author_email='jacob.senecal@gmail.com',
     license='MIT',
-    packages=['pyhatchbuck',],
+    packages=['hatchbuck',],
     install_requires=['requests',],
 )
