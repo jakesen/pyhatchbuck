@@ -1,5 +1,4 @@
 import json
-import urllib
 import requests
 
 from hatchbuck.objects import Contact
