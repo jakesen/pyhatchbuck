@@ -2,6 +2,8 @@ import json
 import urllib
 import requests
 
+from .objects import Contact
+
 BASE_URL = "https://api.hatchbuck.com/api/v1/"
 
 class HatchbuckAPI(object):
@@ -19,10 +21,9 @@ class HatchbuckAPI(object):
         }
 
         request_url = BASE_URL+'contact/search?api_key='+self.api_key
-        r = requests.post(request_url, json=data)
+        response = requests.post(request_url, json=data)
 
-        if r.status_code == 200:
-            contacts_found = True
+        if response.status_code == 200:
+            return [Contact(j) for j in json.loads(response.content)], True
         else:
-            contacts_found = False
-        return (r.content, contacts_found)
+            return [], False

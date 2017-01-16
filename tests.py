@@ -1,9 +1,9 @@
 import os
 import unittest
 
-from hatchbuck import HatchbuckAPI
+from hatchbuck.api import HatchbuckAPI
 
-class TestStuff(unittest.TestCase):
+class TestApiCommands(unittest.TestCase):
 
     def setUp(self):
         self.test_api_key = os.environ.get("HATCHBUCK_API_KEY")
