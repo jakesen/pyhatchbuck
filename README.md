@@ -23,17 +23,30 @@ from hatchbuck.api import HatchbuckAPI
 
 hatchbuck = HatchbuckAPI(api_key)
 
-contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
+contacts = hatchbuck.search_contacts(emails=["jack@pyhatchbuck.net"])
 
 >>> print contacts[0].firstName
 "Jack"
+```
+
+## Searching for Contacts
+
+You can search by `contactId`, `firstName`, `lastName` and one or more `emails`. The emails must be in list form.
+
+```py
+contacts = hatchbuck.search_contacts(
+  contactId="ABCDEF123456",
+  firstName="Jack",
+  lastName="Spratt",
+  emails=["jack@pyhatchbuck.net"]
+)
 ```
 
 ## TODOs
 
 - [x] Search for contacts by email
 - [x] VCR for tests
-- [ ] Search with other attributes
+- [x] Search with other attributes
 - [ ] Add contact
 - [ ] Update contact
 - [ ] Get tags
