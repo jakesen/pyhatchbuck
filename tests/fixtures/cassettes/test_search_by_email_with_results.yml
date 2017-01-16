@@ -1,0 +1,30 @@
+interactions:
+- request:
+    body: !!python/unicode '{"emails": [{"address": "jack@pyhatchbuck.net"}]}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['49']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact/search
+  response:
+    body: {string: !!python/unicode '[{"contactId":"NlNfOTJrVFFtd0E4NVhXWGdmSy0ySVdBSHhpZ01hS1NCSFFxMVBTTmlKVTE1","firstName":"Jack","lastName":"Spratt","emails":[{"id":"UE1DTGptY2tZRUlmSGxNcUlMYWEtd2lZU1ZmX3ZkVElObzcxV1ZWWkZ2YzE1","address":"jack@pyhatchbuck.net","type":"Work","typeId":"VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1"}],"phones":[],"tags":[],"campaigns":[],"status":{"name":"Lead","id":"QWFKTnpzNVYyeFE4M1BUN01OeW9GS0Z0TUEtR0s3akpsc0E4R0RJTHZQczE1"},"salesRep":{"username":"jakesen","id":"Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},"addresses":[],"timezone":"Central
+        Standard Time","socialNetworks":[],"instantMessaging":[],"website":[],"referredBy":"","customFields":[],"subscribed":true}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['706']
+      content-type: [application/json; charset=utf-8]
+      date: ['Mon, 16 Jan 2017 20:03:48 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+version: 1

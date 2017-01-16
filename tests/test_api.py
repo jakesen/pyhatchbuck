@@ -1,4 +1,5 @@
 import os
+import vcr
 import unittest
 
 from hatchbuck.api import HatchbuckAPI
@@ -8,6 +9,10 @@ class TestApiCommands(unittest.TestCase):
     def setUp(self):
         self.test_api_key = os.environ.get("HATCHBUCK_API_KEY")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_search_by_email_with_results.yml',
+        filter_query_parameters=['api_key']
+    )
     def test_search_by_email_with_results(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
         contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
@@ -21,7 +26,10 @@ class TestApiCommands(unittest.TestCase):
         self.assertEqual(contacts[0].subscribed, True)
         self.assertEqual(contacts[0].timezone, "Central Standard Time")
 
-
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_search_by_email_with_no_results.yml',
+        filter_query_parameters=['api_key']
+    )
     def test_search_by_email_with_no_results(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
         contacts = hatchbuck.search_contacts("joe@pyhatchbuck.net")
