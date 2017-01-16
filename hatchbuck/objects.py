@@ -1,5 +1,5 @@
-from .primatives import ApiObject, ApiObjectList
-from .primatives import ApiStringAttribute, ApiListAttribute, ApiBooleanAttribute
+from hatchbuck.primatives import ApiObject, ApiObjectList
+from hatchbuck.primatives import ApiStringAttribute, ApiListAttribute, ApiBooleanAttribute
 
 class Address(ApiObject):
     street = ApiStringAttribute()

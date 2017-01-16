@@ -23,7 +23,9 @@ class ApiStringAttribute(str):
 
 class ApiListAttribute(list):
 
-    def __init__(self, value=[]):
+    def __init__(self, value=None):
+        if value == None:
+            value = []
         super(ApiListAttribute, self).__init__(value)
 
 class ApiBooleanAttribute(object):
