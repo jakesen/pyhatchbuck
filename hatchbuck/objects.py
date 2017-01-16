@@ -18,6 +18,7 @@ class CustomField(ApiObject):
     id = ApiStringAttribute()
 
 class Email(ApiObject):
+    id = ApiStringAttribute()
     address = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
@@ -71,3 +72,5 @@ class Contact(ApiObject):
     website = ApiListAttribute()
     customFields = ApiObjectList(CustomField)
     subscribed = ApiBooleanAttribute()
+    timezone = ApiStringAttribute()
+    referredBy = ApiStringAttribute()
