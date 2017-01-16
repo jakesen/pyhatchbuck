@@ -23,7 +23,7 @@ from hatchbuck.api import HatchbuckAPI
 
 hatchbuck = HatchbuckAPI(api_key)
 
-contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
+contacts = hatchbuck.search_contacts(emails=["jack@pyhatchbuck.net"])
 
 >>> print contacts[0].firstName
 "Jack"
