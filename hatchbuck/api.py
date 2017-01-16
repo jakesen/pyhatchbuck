@@ -24,6 +24,6 @@ class HatchbuckAPI(object):
         response = requests.post(request_url, json=data)
 
         if response.status_code == 200:
-            return [Contact(j) for j in json.loads(response.content)], True
+            return [Contact(j) for j in json.loads(response.content)]
         else:
-            return [], False
+            return None

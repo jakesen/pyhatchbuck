@@ -10,8 +10,8 @@ class TestApiCommands(unittest.TestCase):
 
     def test_search_by_email_with_results(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
-        contacts, found = hatchbuck.search_contacts("jack@pyhatchbuck.net")
-        self.assertEqual(found, True)
+        contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
+        self.assertEqual(len(contacts), 1)
         self.assertEqual(contacts[0].firstName, "Jack")
         self.assertEqual(contacts[0].lastName, "Spratt")
         self.assertEqual(contacts[0].salesRep.username, "jakesen")
@@ -24,8 +24,8 @@ class TestApiCommands(unittest.TestCase):
 
     def test_search_by_email_with_no_results(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
-        contacts, found = hatchbuck.search_contacts("joe@pyhatchbuck.net")
-        self.assertEqual(found, False)
+        contacts = hatchbuck.search_contacts("joe@pyhatchbuck.net")
+        self.assertEqual(contacts, None)
 
 if __name__ == '__main__':
     unittest.main()
