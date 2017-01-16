@@ -1,0 +1,30 @@
+interactions:
+- request:
+    body: !!python/unicode '{"emails": [{"address": "joe@pyhatchbuck.net"}]}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['48']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact/search
+  response:
+    body: {string: !!python/unicode '{"Message":"No contact found for given search
+        criteria."}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['57']
+      content-type: [application/json; charset=utf-8]
+      date: ['Mon, 16 Jan 2017 20:03:48 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 400, message: Bad Request}
+version: 1
