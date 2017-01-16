@@ -49,5 +49,19 @@ class TestSearchContacts(unittest.TestCase):
         self.assertEqual(contacts[0].firstName, "Jack")
         self.assertEqual(contacts[0].lastName, "Spratt")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_search_by_name_with_results.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_search_by_name_with_results(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contacts = hatchbuck.search_contacts(
+            firstName="Jack",
+            lastName="Spratt"
+        )
+        self.assertEqual(len(contacts), 1)
+        self.assertEqual(contacts[0].firstName, "Jack")
+        self.assertEqual(contacts[0].lastName, "Spratt")
+
 if __name__ == '__main__':
     unittest.main()
