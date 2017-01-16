@@ -2,7 +2,7 @@ import json
 import urllib
 import requests
 
-from .objects import Contact
+from hatchbuck.objects import Contact
 
 BASE_URL = "https://api.hatchbuck.com/api/v1/"
 
