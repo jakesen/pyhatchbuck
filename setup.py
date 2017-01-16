@@ -9,4 +9,5 @@ setup(
     author_email='jacob.senecal@gmail.com',
     license='MIT',
     packages=['pyhatchbuck',],
+    install_requires=['requests',],
 )
