@@ -7,7 +7,8 @@ from hatchbuck.api import HatchbuckAPI
 class TestApiCommands(unittest.TestCase):
 
     def setUp(self):
-        self.test_api_key = os.environ.get("HATCHBUCK_API_KEY")
+        # Fake key can be used with existing cassettes
+        self.test_api_key = os.environ.get("HATCHBUCK_API_KEY", "ABC123")
 
     @vcr.use_cassette(
         'tests/fixtures/cassettes/test_search_by_email_with_results.yml',
