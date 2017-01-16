@@ -23,8 +23,24 @@ from hatchbuck.api import HatchbuckAPI
 
 hatchbuck = HatchbuckAPI(api_key)
 
-contacts, found = hatchbuck.search_contacts("jack@pyhatchbuck.net")
+contacts = hatchbuck.search_contacts("jack@pyhatchbuck.net")
 
 >>> print contacts[0].firstName
 "Jack"
 ```
+
+## TODOs
+
+- [ ] Search with other attributes
+- [ ] Add contact
+- [ ] Update contact
+- [ ] Get tags
+- [ ] Add tags
+- [ ] Delete tags
+- [ ] Get campaign
+- [ ] Start campaign
+- [ ] Stop campaign
+- [ ] More complete documentation
+- [ ] Publish for PIP
+- [ ] VCR for tests?
+- [ ] Docstrings?
