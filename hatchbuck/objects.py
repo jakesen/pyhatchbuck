@@ -74,3 +74,13 @@ class Contact(ApiObject):
     subscribed = ApiBooleanAttribute()
     timezone = ApiStringAttribute()
     referredBy = ApiStringAttribute()
+
+    def __init__(self, api_key, json_data=None):
+        super(Contact, self).__init__(json_data)
+        self.api_key = api_key
+
+    def save(self):
+        from hatchbuck.api import HatchbuckAPI
+        if self.contactId == "":
+            self.load_dict(HatchbuckAPI(self.api_key).add_contact(self))
+            return self.contactId != ""
