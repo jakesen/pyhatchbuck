@@ -45,7 +45,7 @@ class TestAddContact(unittest.TestCase):
             zip="55555",
             type="Work"
         )
-        contact.time_zone = "Central Standard Time"
+        contact.timezone = "Pacific Standard Time"
         contact.set_temperature(id="QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1")
         contact.add_phone(number="555-555-5555", type="Work")
         contact.add_social_network(address="@pyhatchbuck", type="twitter")
@@ -54,7 +54,7 @@ class TestAddContact(unittest.TestCase):
         contact.sourceId = "UnVvT0c0dmxsVVdFYUR1MUZIOTVJeDFXSGxudTBaUG5uZ1QxdVo1aElUVTE1"
         success = contact.save()
         self.assertEqual(success, True)
-        self.assertEqual(contact.contactId, "UmJfdTFMeXVMYThqekdGMFg5alg3MHFzREtCWmdCNTNwLXlfQkVGX2RxODE1")
+        self.assertEqual(contact.contactId, "NVRnSnNTcjI3UW9FQWs3MjN1QnpTQUZKZUdlbzBycVdQbXpScmFMOE9jNDE1")
 
 if __name__ == '__main__':
     unittest.main()
