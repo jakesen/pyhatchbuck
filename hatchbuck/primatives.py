@@ -1,7 +1,7 @@
 class ApiObject(object):
 
     def __init__(self, json_data=None):
-        if json_data:
+        if json_data != None:
             self.load_dict(json_data)
         self.__initialised = True
 
