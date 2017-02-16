@@ -1,3 +1,4 @@
 dependencies:
   pre:
     - pip install vcrpy
+    - pip install requests
