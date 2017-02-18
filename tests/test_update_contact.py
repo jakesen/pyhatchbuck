@@ -17,7 +17,6 @@ class TestUpdateContact(unittest.TestCase):
     )
     def test_update_basic_contact(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
-        contact = hatchbuck.new_contact()
         contact_id = "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"
         contact = hatchbuck.search_contacts(contactId=contact_id)[0]
         self.assertEqual(contact.contactId, contact_id)
@@ -34,7 +33,6 @@ class TestUpdateContact(unittest.TestCase):
     )
     def test_update_contact_email(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
-        contact = hatchbuck.new_contact()
         contact_id = "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"
         contact = hatchbuck.search_contacts(contactId=contact_id)[0]
         self.assertEqual(contact.emails[0].address, "jill@pyhatchbuck.net")
@@ -43,6 +41,19 @@ class TestUpdateContact(unittest.TestCase):
         self.assertEqual(success, True)
         self.assertEqual(contact.emails[0].address, "jill.smith@pyhatchbuck.net")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_update_contact_address.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_update_contact_address(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.addresses[0].street, "123 Main Street")
+        contact.addresses[0].street = "555 Commerce Ave"
+        success = contact.save()
+        self.assertEqual(success, True)
+        self.assertEqual(contact.addresses[0].street, "555 Commerce Ave")
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,81 @@
+interactions:
+- request:
+    body: !!python/unicode '{"contactId": "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['77']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact/search
+  response:
+    body: {string: !!python/unicode '[{"contactId":"TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1","firstName":"Alex","lastName":"Smith","title":"Account
+        Manager","company":"ACME Incorporated","emails":[{"id":"OENJMnh6akpHajR4Z3c4SWN0LW01dUIyc3FYZGlfaXdPaWNXQ05ycERUczE1","address":"alex@pyhatchbuck.net","type":"Work","typeId":"VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1"}],"phones":[{"id":"a21NRHpOay1jZVdGYUZudEJFZFNxRzVJQ0xPRThsWDcxTERtaWR0S0FTdzE1","number":"555-555-5555","type":"Work","typeId":"QTBncHV0dndnaGNnRVMzLTR0SGtFRmRvZjdqNm4zcVphQi1XX1Z2MXVtRTE1"}],"tags":[],"campaigns":[],"status":{"name":"Customer","id":"dGlKTUR2LXlVVlNmQUkwb1Njbjlhd1pSVDFsNXB5UWFESFdnZlhaN3BOYzE1"},"temperature":{"name":"Hot","id":"QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1"},"salesRep":{"username":"jakesen","id":"Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},"addresses":[{"id":"S1dUa2c1UDdEeFpiQk5UMFNBZXJfaWNvbkh0N1h6N05pWkNBTzNJUzFERTE1","street":"123
+        Main Street","city":"Anytown","state":"AL","zip":"55555","countryId":"LS1qcWZaeVFGdkRXNnZpcTlkclVORHNLMTVnMWhObkFQVnItdmM0RTlTczE1","country":"United
+        States","type":"Work","typeId":"SjFENlU0Y2s2RDFpM0NKWEExRmVvSjZ4T3NJMG5pLWNYZjRseDBSaTVfVTE1"}],"timezone":"Pacific
+        Standard Time","socialNetworks":[{"id":"dGNZT0xWVVJSQlBKOWxLdnBlZS01MWdUQkxadk1XM2p1cG8yRWFhNjAyWTE1","address":"@pyhatchbuck","type":"Twitter","typeId":"ZGRlMHpBaXY3M05YUGc4a0pIY3lRdUFKN1JYaDd2VEphbzhSRkdzM2x4bzE1"}],"instantMessaging":[{"id":"OWdYcHkzcVBwRE4zZEtzTEhJbFc4SVpLTm91WjJWd2tQUWxXcm9TdjdHazE1","address":"alex.pyhatchbuck","type":"Skype","typeId":"MFJ4cjFxWllHLUtyU3hmczQ0a2otV1NnQUhkWGIyNlF1ZUpKVEZJeGQ4ODE1"}],"website":[{"websiteUrl":"www.pyhatchbuck.net","id":"VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1"}],"referredBy":"","customFields":[],"subscribed":true}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['1840']
+      content-type: [application/json; charset=utf-8]
+      date: ['Sat, 18 Feb 2017 16:31:09 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+- request:
+    body: !!python/unicode '{"website": [{"websiteUrl": "www.pyhatchbuck.net", "id":
+      "VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1"}], "status":
+      {"name": "Customer", "id": "dGlKTUR2LXlVVlNmQUkwb1Njbjlhd1pSVDFsNXB5UWFESFdnZlhaN3BOYzE1"},
+      "addresses": [{"city": "Anytown", "zip": "55555", "typeId": "SjFENlU0Y2s2RDFpM0NKWEExRmVvSjZ4T3NJMG5pLWNYZjRseDBSaTVfVTE1",
+      "country": "United States", "state": "AL", "street": "555 Commerce Ave", "type":
+      "Work"}], "firstName": "Alex", "title": "Account Manager", "salesRep": {"username":
+      "jakesen", "id": "Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},
+      "company": "ACME Incorporated", "lastName": "Smith", "instantMessaging": [{"typeId":
+      "MFJ4cjFxWllHLUtyU3hmczQ0a2otV1NnQUhkWGIyNlF1ZUpKVEZJeGQ4ODE1", "type": "Skype",
+      "address": "alex.pyhatchbuck"}], "contactId": "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1",
+      "socialNetworks": [{"typeId": "ZGRlMHpBaXY3M05YUGc4a0pIY3lRdUFKN1JYaDd2VEphbzhSRkdzM2x4bzE1",
+      "type": "Twitter", "address": "@pyhatchbuck"}], "phones": [{"typeId": "QTBncHV0dndnaGNnRVMzLTR0SGtFRmRvZjdqNm4zcVphQi1XX1Z2MXVtRTE1",
+      "type": "Work", "number": "555-555-5555"}], "timezone": "Pacific Standard Time",
+      "emails": [{"typeId": "VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1",
+      "type": "Work", "id": "OENJMnh6akpHajR4Z3c4SWN0LW01dUIyc3FYZGlfaXdPaWNXQ05ycERUczE1",
+      "address": "alex@pyhatchbuck.net"}], "temperature": {"name": "Hot", "id": "QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1"}}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['1491']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: PUT
+    uri: https://api.hatchbuck.com/api/v1/contact
+  response:
+    body: {string: !!python/unicode '{"contactId":"TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1","firstName":"Alex","lastName":"Smith","title":"Account
+        Manager","company":"ACME Incorporated","emails":[{"id":"OENJMnh6akpHajR4Z3c4SWN0LW01dUIyc3FYZGlfaXdPaWNXQ05ycERUczE1","address":"alex@pyhatchbuck.net","type":"Work","typeId":"VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1"}],"phones":[{"id":"a21NRHpOay1jZVdGYUZudEJFZFNxRzVJQ0xPRThsWDcxTERtaWR0S0FTdzE1","number":"555-555-5555","type":"Work","typeId":"QTBncHV0dndnaGNnRVMzLTR0SGtFRmRvZjdqNm4zcVphQi1XX1Z2MXVtRTE1"}],"tags":[],"campaigns":[],"status":{"name":"Customer","id":"dGlKTUR2LXlVVlNmQUkwb1Njbjlhd1pSVDFsNXB5UWFESFdnZlhaN3BOYzE1"},"temperature":{"name":"Hot","id":"QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1"},"salesRep":{"username":"jakesen","id":"Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},"addresses":[{"id":"YlFxUEZPR3M5MGVDSW9XXzhEMDhqVmNVdzVHTUU3U2duT21lYk9tMnU1YzE1","street":"555
+        Commerce Ave","city":"Anytown","state":"AL","zip":"55555","countryId":"LS1qcWZaeVFGdkRXNnZpcTlkclVORHNLMTVnMWhObkFQVnItdmM0RTlTczE1","country":"United
+        States","type":"Work","typeId":"SjFENlU0Y2s2RDFpM0NKWEExRmVvSjZ4T3NJMG5pLWNYZjRseDBSaTVfVTE1"},{"id":"S1dUa2c1UDdEeFpiQk5UMFNBZXJfaWNvbkh0N1h6N05pWkNBTzNJUzFERTE1","street":"123
+        Main Street","city":"Anytown","state":"AL","zip":"55555","countryId":"LS1qcWZaeVFGdkRXNnZpcTlkclVORHNLMTVnMWhObkFQVnItdmM0RTlTczE1","country":"United
+        States","type":"Work","typeId":"SjFENlU0Y2s2RDFpM0NKWEExRmVvSjZ4T3NJMG5pLWNYZjRseDBSaTVfVTE1"}],"timezone":"Pacific
+        Standard Time","socialNetworks":[{"id":"dGNZT0xWVVJSQlBKOWxLdnBlZS01MWdUQkxadk1XM2p1cG8yRWFhNjAyWTE1","address":"@pyhatchbuck","type":"Twitter","typeId":"ZGRlMHpBaXY3M05YUGc4a0pIY3lRdUFKN1JYaDd2VEphbzhSRkdzM2x4bzE1"}],"instantMessaging":[{"id":"OWdYcHkzcVBwRE4zZEtzTEhJbFc4SVpLTm91WjJWd2tQUWxXcm9TdjdHazE1","address":"alex.pyhatchbuck","type":"Skype","typeId":"MFJ4cjFxWllHLUtyU3hmczQ0a2otV1NnQUhkWGIyNlF1ZUpKVEZJeGQ4ODE1"}],"website":[{"websiteUrl":"www.pyhatchbuck.net","id":"VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1"}],"referredBy":"","customFields":[],"subscribed":true}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['2167']
+      content-type: [application/json; charset=utf-8]
+      date: ['Sat, 18 Feb 2017 16:31:10 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+version: 1
