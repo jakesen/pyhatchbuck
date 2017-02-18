@@ -1,5 +1,5 @@
 from hatchbuck.primatives import ApiObject, ApiObjectList
-from hatchbuck.primatives import ApiStringAttribute, ApiListAttribute, ApiBooleanAttribute
+from hatchbuck.primatives import ApiStringAttribute, ApiBooleanAttribute
 
 class Address(ApiObject):
     id = ApiStringAttribute()
