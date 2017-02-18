@@ -41,3 +41,13 @@ class HatchbuckAPI(object):
             return json.loads(response.content)
         else:
             return None
+
+    def update_contact(self, contact):
+        data = contact.as_dict()
+        request_url = BASE_URL+'contact?api_key='+self.api_key
+        response = requests.put(request_url, json=data)
+
+        if response.status_code == 200:
+            return json.loads(response.content)
+        else:
+            return None

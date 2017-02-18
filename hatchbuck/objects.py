@@ -1,11 +1,13 @@
 from hatchbuck.primatives import ApiObject, ApiObjectList
-from hatchbuck.primatives import ApiStringAttribute, ApiListAttribute, ApiBooleanAttribute
+from hatchbuck.primatives import ApiStringAttribute, ApiBooleanAttribute
 
 class Address(ApiObject):
+    id = ApiStringAttribute()
     street = ApiStringAttribute()
     city = ApiStringAttribute()
     state = ApiStringAttribute()
     zip = ApiStringAttribute()
+    country = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
@@ -24,16 +26,19 @@ class Email(ApiObject):
     typeId = ApiStringAttribute()
 
 class InstantMessage(ApiObject):
+    id = ApiStringAttribute()
     address = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
 class Phone(ApiObject):
+    id = ApiStringAttribute()
     number = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
 class SocialNetwork(ApiObject):
+    id = ApiStringAttribute()
     address = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
@@ -53,6 +58,10 @@ class User(ApiObject):
     username = ApiStringAttribute()
     id = ApiStringAttribute()
 
+class Website(ApiObject):
+    websiteUrl = ApiStringAttribute()
+    id = ApiStringAttribute()
+
 class Contact(ApiObject):
     contactId = ApiStringAttribute()
     sourceId = ApiStringAttribute()
@@ -70,7 +79,7 @@ class Contact(ApiObject):
     addresses = ApiObjectList(Address)
     socialNetworks = ApiObjectList(SocialNetwork)
     instantMessaging = ApiObjectList(InstantMessage)
-    website = ApiListAttribute()
+    website = ApiObjectList(Website)
     customFields = ApiObjectList(CustomField)
     subscribed = ApiBooleanAttribute()
     timezone = ApiStringAttribute()
@@ -85,7 +94,7 @@ class Contact(ApiObject):
         self.addresses = ApiObjectList(Address)
         self.socialNetworks = ApiObjectList(SocialNetwork)
         self.instantMessaging = ApiObjectList(InstantMessage)
-        self.website = ApiListAttribute()
+        self.website = ApiObjectList(Website)
         self.customFields = ApiObjectList(CustomField)
         # call super to load json values
         super(Contact, self).__init__(json_data)
@@ -98,12 +107,13 @@ class Contact(ApiObject):
     def set_status(self, name):
         self.status = Status({'name': name})
 
-    def add_address(self, street, city, state, zip, type):
+    def add_address(self, street, city, state, zip, country, type):
         self.addresses.append(Address({
             'street': street,
             'city': city,
             'state': state,
             'zip': zip,
+            'country': country,
             'type': type
         }))
 
@@ -123,14 +133,17 @@ class Contact(ApiObject):
         self.instantMessaging.append(InstantMessage({'address': address, 'type': type}))
 
     def add_website(self, websiteUrl):
-        self.website.append({'websiteUrl': websiteUrl})
+        self.website.append(Website({'websiteUrl': websiteUrl}))
 
     def save(self):
         from hatchbuck.api import HatchbuckAPI
+        new_data = None
         if self.contactId == "":
             new_data = HatchbuckAPI(self.api_key).add_contact(self)
-            if new_data != None:
-                self.load_dict(new_data)
-                return self.contactId != ""
-            else:
-                return False
+        else:
+            new_data = HatchbuckAPI(self.api_key).update_contact(self)
+        if new_data != None:
+            self.load_dict(new_data)
+            return self.contactId != ""
+        else:
+            return False

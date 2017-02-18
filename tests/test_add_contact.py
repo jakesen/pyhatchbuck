@@ -43,6 +43,7 @@ class TestAddContact(unittest.TestCase):
             city="Anytown",
             state="AL",
             zip="55555",
+            country="United States",
             type="Work"
         )
         contact.timezone = "Pacific Standard Time"
@@ -54,7 +55,8 @@ class TestAddContact(unittest.TestCase):
         contact.sourceId = "UnVvT0c0dmxsVVdFYUR1MUZIOTVJeDFXSGxudTBaUG5uZ1QxdVo1aElUVTE1"
         success = contact.save()
         self.assertEqual(success, True)
-        self.assertEqual(contact.contactId, "NVRnSnNTcjI3UW9FQWs3MjN1QnpTQUZKZUdlbzBycVdQbXpScmFMOE9jNDE1")
+        self.assertEqual(contact.contactId, "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1")
+        self.assertEqual(contact.addresses[0].street, "123 Main Street")
 
 if __name__ == '__main__':
     unittest.main()
