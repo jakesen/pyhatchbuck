@@ -127,10 +127,13 @@ class Contact(ApiObject):
 
     def save(self):
         from hatchbuck.api import HatchbuckAPI
+        new_data = None
         if self.contactId == "":
             new_data = HatchbuckAPI(self.api_key).add_contact(self)
-            if new_data != None:
-                self.load_dict(new_data)
-                return self.contactId != ""
-            else:
-                return False
+        else:
+            new_data = HatchbuckAPI(self.api_key).update_contact(self)
+        if new_data != None:
+            self.load_dict(new_data)
+            return self.contactId != ""
+        else:
+            return False
