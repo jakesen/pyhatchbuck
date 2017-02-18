@@ -14,7 +14,10 @@ This library is intended to provide a full python wrapper for the [Hatchbuck][ha
 * start campaign
 * stop campaign
 
+The API version supported is v1. API documentation can be found [here][hatchbuck-api-docs].
+
 [hatchbuck]: http://www.hatchbuck.com
+[hatchbuck-api-docs]: https://hatchbuck.freshdesk.com/support/solutions/articles/5000578765-hatchbuck-api-documentation
 
 ## Usage (so far)
 
