@@ -58,6 +58,10 @@ class User(ApiObject):
     username = ApiStringAttribute()
     id = ApiStringAttribute()
 
+class Website(ApiObject):
+    websiteUrl = ApiStringAttribute()
+    id = ApiStringAttribute()
+
 class Contact(ApiObject):
     contactId = ApiStringAttribute()
     sourceId = ApiStringAttribute()
@@ -75,7 +79,7 @@ class Contact(ApiObject):
     addresses = ApiObjectList(Address)
     socialNetworks = ApiObjectList(SocialNetwork)
     instantMessaging = ApiObjectList(InstantMessage)
-    website = ApiListAttribute()
+    website = ApiObjectList(Website)
     customFields = ApiObjectList(CustomField)
     subscribed = ApiBooleanAttribute()
     timezone = ApiStringAttribute()
@@ -90,7 +94,7 @@ class Contact(ApiObject):
         self.addresses = ApiObjectList(Address)
         self.socialNetworks = ApiObjectList(SocialNetwork)
         self.instantMessaging = ApiObjectList(InstantMessage)
-        self.website = ApiListAttribute()
+        self.website = ApiObjectList(Website)
         self.customFields = ApiObjectList(CustomField)
         # call super to load json values
         super(Contact, self).__init__(json_data)
@@ -129,7 +133,7 @@ class Contact(ApiObject):
         self.instantMessaging.append(InstantMessage({'address': address, 'type': type}))
 
     def add_website(self, websiteUrl):
-        self.website.append({'websiteUrl': websiteUrl})
+        self.website.append(Website({'websiteUrl': websiteUrl}))
 
     def save(self):
         from hatchbuck.api import HatchbuckAPI
