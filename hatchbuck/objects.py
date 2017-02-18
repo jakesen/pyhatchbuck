@@ -2,6 +2,7 @@ from hatchbuck.primatives import ApiObject, ApiObjectList
 from hatchbuck.primatives import ApiStringAttribute, ApiListAttribute, ApiBooleanAttribute
 
 class Address(ApiObject):
+    id = ApiStringAttribute()
     street = ApiStringAttribute()
     city = ApiStringAttribute()
     state = ApiStringAttribute()
@@ -25,16 +26,19 @@ class Email(ApiObject):
     typeId = ApiStringAttribute()
 
 class InstantMessage(ApiObject):
+    id = ApiStringAttribute()
     address = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
 class Phone(ApiObject):
+    id = ApiStringAttribute()
     number = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
 class SocialNetwork(ApiObject):
+    id = ApiStringAttribute()
     address = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
