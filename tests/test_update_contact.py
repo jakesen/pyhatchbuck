@@ -121,5 +121,21 @@ class TestUpdateContact(unittest.TestCase):
         self.assertEqual(contact.instantMessaging[0].address, "as.pyhatchbuck")
         self.assertEqual(contact.instantMessaging[0].id, "OWdYcHkzcVBwRE4zZEtzTEhJbFc4SVpLTm91WjJWd2tQUWxXcm9TdjdHazE1")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_update_contact_website.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_update_contact_website(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.website[0].websiteUrl, "www.pyhatchbuck.net")
+        self.assertEqual(contact.website[0].id, "VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1")
+        contact.website[0].websiteUrl = "www.pyhatchbuck-rocks.net"
+        success = contact.save()
+        self.assertEqual(success, True)
+        self.assertEqual(contact.website[0].websiteUrl, "www.pyhatchbuck-rocks.net")
+        self.assertEqual(contact.website[0].id, "VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1")
+
 if __name__ == '__main__':
     unittest.main()
