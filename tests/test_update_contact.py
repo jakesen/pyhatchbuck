@@ -69,5 +69,19 @@ class TestUpdateContact(unittest.TestCase):
         self.assertEqual(success, True)
         self.assertEqual(contact.temperature.name, "On Fire")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_update_contact_phone.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_update_contact_phone(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.phones[0].number, "555-555-5555")
+        contact.phones[0].number = "555-555-1234"
+        success = contact.save()
+        self.assertEqual(success, True)
+        self.assertEqual(contact.phones[0].number, "555-555-1234")
+
 if __name__ == '__main__':
     unittest.main()
