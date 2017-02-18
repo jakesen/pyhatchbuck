@@ -6,6 +6,7 @@ class Address(ApiObject):
     city = ApiStringAttribute()
     state = ApiStringAttribute()
     zip = ApiStringAttribute()
+    country = ApiStringAttribute()
     type = ApiStringAttribute()
     typeId = ApiStringAttribute()
 
@@ -98,12 +99,13 @@ class Contact(ApiObject):
     def set_status(self, name):
         self.status = Status({'name': name})
 
-    def add_address(self, street, city, state, zip, type):
+    def add_address(self, street, city, state, zip, country, type):
         self.addresses.append(Address({
             'street': street,
             'city': city,
             'state': state,
             'zip': zip,
+            'country': country,
             'type': type
         }))
 
