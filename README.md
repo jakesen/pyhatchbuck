@@ -74,13 +74,25 @@ contact.sourceId = "UnVvT0c0dmxsVVdFYUR1MUZIOTVJeDFXSGxudTBaUG5uZ1QxdVo1aElUVTE1
 success = contact.save()
 ```
 
+## Updating a Contact
+
+Calling save to update an existing contact will return `True` if successful, and the contact data will be reloaded from the API response.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+contact.emails[0].address = "alex@pyhatchbuck.net"
+contact.phones[0].number = "555-555-5555"
+#...ETC...
+success = contact.save()
+```
+
 ## TODOs
 
 - [x] Search for contacts by email
 - [x] VCR for tests
 - [x] Search with other attributes
 - [x] Add contact
-- [ ] Update contact
+- [x] Update contact
 - [ ] Get tags
 - [ ] Add tags
 - [ ] Delete tags
