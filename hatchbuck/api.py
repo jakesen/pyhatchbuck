@@ -61,3 +61,17 @@ class HatchbuckAPI(object):
             return ApiObjectList(Tag, json.loads(response.content))
         else:
             return None
+
+    def add_tags(self, contact_id_or_email, tags):
+        from hatchbuck.primatives import ApiObjectList
+        from hatchbuck.objects import Tag
+        if not isinstance(tags, ApiObjectList):
+            tags = ApiObjectList(Tag, tags)
+        data = tags.as_dict_list()
+        request_url = BASE_URL+'contact/'+contact_id_or_email+'/Tags?api_key='+self.api_key
+        response = requests.post(request_url, json=data)
+
+        if response.status_code == 201:
+            return True
+        else:
+            return False
