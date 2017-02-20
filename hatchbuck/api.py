@@ -52,10 +52,10 @@ class HatchbuckAPI(object):
         else:
             return None
 
-    def get_tags(self, contactId):
+    def get_tags(self, contact_id_or_email):
         from hatchbuck.primatives import ApiObjectList
         from hatchbuck.objects import Tag
-        request_url = BASE_URL+'contact/'+contactId+'/Tags?api_key='+self.api_key
+        request_url = BASE_URL+'contact/'+contact_id_or_email+'/Tags?api_key='+self.api_key
         response = requests.get(request_url)
         if response.status_code == 200:
             return ApiObjectList(Tag, json.loads(response.content))
