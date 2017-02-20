@@ -150,6 +150,10 @@ class Contact(ApiObject):
         from hatchbuck.api import HatchbuckAPI
         return HatchbuckAPI(self.api_key).add_tags(self.contactId, tags)
 
+    def delete_tags(self, tags):
+        from hatchbuck.api import HatchbuckAPI
+        return HatchbuckAPI(self.api_key).delete_tags(self.contactId, tags)
+
     def save(self):
         from hatchbuck.api import HatchbuckAPI
         new_data = None
