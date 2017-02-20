@@ -37,5 +37,24 @@ class TestTags(unittest.TestCase):
         self.assertEqual(tags[0].score, 1)
         self.assertEqual(tags[0].id, "WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_add_contact_tags.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_add_contact_tags(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.contactId, contact_id)
+        success = contact.add_tags([{'name': 'Old Contact List'}])
+        self.assertEqual(success, True)
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.tags[0].name, "Possible Client")
+        self.assertEqual(contact.tags[0].score, 1)
+        self.assertEqual(contact.tags[0].id, "WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1")
+        self.assertEqual(contact.tags[1].name, "Old Contact List")
+        self.assertEqual(contact.tags[1].score, 3)
+        self.assertEqual(contact.tags[1].id, "elZDN1dSa3ZmSDJ1MjNrRVBabDhoNmdKbmthUmY1YTVOYkx5TmhwYVZfSTE1")
+
 if __name__ == '__main__':
     unittest.main()
