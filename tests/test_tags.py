@@ -56,5 +56,22 @@ class TestTags(unittest.TestCase):
         self.assertEqual(contact.tags[1].score, 3)
         self.assertEqual(contact.tags[1].id, "elZDN1dSa3ZmSDJ1MjNrRVBabDhoNmdKbmthUmY1YTVOYkx5TmhwYVZfSTE1")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_delete_contact_tags.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_delete_contact_tags(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.contactId, contact_id)
+        success = contact.delete_tags([{'name': 'Possible Client'}])
+        self.assertEqual(success, True)
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(len(contact.tags), 1)
+        self.assertEqual(contact.tags[0].name, "Old Contact List")
+        self.assertEqual(contact.tags[0].score, 3)
+        self.assertEqual(contact.tags[0].id, "elZDN1dSa3ZmSDJ1MjNrRVBabDhoNmdKbmthUmY1YTVOYkx5TmhwYVZfSTE1")
+
 if __name__ == '__main__':
     unittest.main()
