@@ -75,3 +75,17 @@ class HatchbuckAPI(object):
             return True
         else:
             return False
+
+    def delete_tags(self, contact_id_or_email, tags):
+        from hatchbuck.primatives import ApiObjectList
+        from hatchbuck.objects import Tag
+        if not isinstance(tags, ApiObjectList):
+            tags = ApiObjectList(Tag, tags)
+        data = tags.as_dict_list()
+        request_url = BASE_URL+'contact/'+contact_id_or_email+'/Tags?api_key='+self.api_key
+        response = requests.delete(request_url, json=data)
+
+        if response.status_code == 200:
+            return True
+        else:
+            return False
