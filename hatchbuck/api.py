@@ -51,3 +51,13 @@ class HatchbuckAPI(object):
             return json.loads(response.content)
         else:
             return None
+
+    def get_tags(self, contactId):
+        from hatchbuck.primatives import ApiObjectList
+        from hatchbuck.objects import Tag
+        request_url = BASE_URL+'contact/'+contactId+'/Tags?api_key='+self.api_key
+        response = requests.get(request_url)
+        if response.status_code == 200:
+            return ApiObjectList(Tag, json.loads(response.content))
+        else:
+            return None
