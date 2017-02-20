@@ -21,6 +21,21 @@ class TestTags(unittest.TestCase):
         contact = hatchbuck.search_contacts(contactId=contact_id)[0]
         self.assertEqual(contact.contactId, contact_id)
         tags = contact.get_tags()
-        self.assertEqual(contact.tags[0].name, "Possible Client")
-        self.assertEqual(contact.tags[0].score, 1)
-        self.assertEqual(contact.tags[0].id, "WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1")
+        self.assertEqual(tags[0].name, "Possible Client")
+        self.assertEqual(tags[0].score, 1)
+        self.assertEqual(tags[0].id, "WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1")
+
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_get_contact_tags_by_email.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_get_contact_tags_by_email(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_email = "jill.smith@pyhatchbuck.net"
+        tags = hatchbuck.get_tags(contact_email)
+        self.assertEqual(tags[0].name, "Possible Client")
+        self.assertEqual(tags[0].score, 1)
+        self.assertEqual(tags[0].id, "WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1")
+
+if __name__ == '__main__':
+    unittest.main()
