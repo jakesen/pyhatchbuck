@@ -86,6 +86,49 @@ contact.phones[0].number = "555-555-5555"
 success = contact.save()
 ```
 
+## Getting Tags
+
+You can get tags by email or by contact id.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+tags = contact.get_tags()
+# or
+tags = hatchbuck.get_tags("alex@pyhatchbuck.net")
+
+>>> print tags[0].name
+"Tag Name"
+>>> print tags[0].id
+"ABCDEF123456"
+```
+
+## Adding Tags
+
+You can add tags by email or by contact id. You must give a list of tags to add with each tag's name or id.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+tags = contact.add_tags([{'name': "New Tag"}])
+# or
+tags = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'name': "New Tag"}])
+# or
+tags = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+```
+
+## Deleting Tags
+
+You can delete tags by email or by contact id. You must give a list of tags to delete with each tag's name or id.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+tags = contact.delete_tags([{'name': "Old Tag"}])
+# or
+tags = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'name': "Old Tag"}])
+# or
+tags = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+```
+
+
 ## TODOs
 
 - [x] Search for contacts by email
@@ -93,9 +136,9 @@ success = contact.save()
 - [x] Search with other attributes
 - [x] Add contact
 - [x] Update contact
-- [ ] Get tags
-- [ ] Add tags
-- [ ] Delete tags
+- [x] Get tags
+- [x] Add tags
+- [x] Delete tags
 - [ ] Get campaign
 - [ ] Start campaign
 - [ ] Stop campaign
