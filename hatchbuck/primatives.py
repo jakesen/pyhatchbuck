@@ -13,6 +13,8 @@ class ApiObject(object):
                     setattr(self, k, ApiObjectList(object_attr.object_class, v))
                 elif isinstance(object_attr, ApiStringAttribute):
                     setattr(self, k, ApiStringAttribute(v))
+                elif isinstance(object_attr, ApiIntegerAttribute):
+                    setattr(self, k, ApiIntegerAttribute(v))
                 elif isinstance(object_attr, ApiBooleanAttribute):
                     setattr(self, k, v)
                 elif isinstance(object_attr, ApiObject):
@@ -27,6 +29,8 @@ class ApiObject(object):
                 value = object_attr.as_dict_list()
             elif isinstance(object_attr, ApiStringAttribute):
                 value = str(object_attr)
+            elif isinstance(object_attr, ApiIntegerAttribute):
+                value = int(object_attr)
             elif isinstance(object_attr, ApiObject):
                 value = object_attr.as_dict()
             if value not in ('', [], {}, None):
@@ -40,6 +44,8 @@ class ApiObject(object):
                 super(ApiObject, self).__setattr__(name, ApiObjectList(value))
             elif isinstance(object_attr, ApiStringAttribute) and not isinstance(value, ApiStringAttribute):
                 super(ApiObject, self).__setattr__(name, ApiStringAttribute(value))
+            elif isinstance(object_attr, ApiIntegerAttribute) and not isinstance(value, ApiIntegerAttribute):
+                super(ApiObject, self).__setattr__(name, ApiIntegerAttribute(value))
             elif isinstance(object_attr, ApiObject) and not isinstance(value, ApiObject):
                 super(ApiObject, self).__setattr__(name, ApiObject(value))
             else:
@@ -52,6 +58,11 @@ class ApiStringAttribute(str):
 
     def __init__(self, value=None):
         super(ApiStringAttribute, self).__init__(value)
+
+class ApiIntegerAttribute(int):
+
+    def __init__(self, value=None):
+        super(ApiIntegerAttribute, self).__init__(value)
 
 class ApiBooleanAttribute(object):
     pass

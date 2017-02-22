@@ -1,4 +1,4 @@
-from hatchbuck.primatives import ApiObject, ApiObjectList
+from hatchbuck.primatives import ApiObject, ApiObjectList, ApiIntegerAttribute
 from hatchbuck.primatives import ApiStringAttribute, ApiBooleanAttribute
 
 class Address(ApiObject):
@@ -48,7 +48,9 @@ class Status(ApiObject):
     id = ApiStringAttribute()
 
 class Tag(ApiObject):
-    pass
+    id = ApiStringAttribute()
+    name = ApiStringAttribute()
+    score = ApiIntegerAttribute()
 
 class Temperature(ApiObject):
     name = ApiStringAttribute()
@@ -134,6 +136,23 @@ class Contact(ApiObject):
 
     def add_website(self, websiteUrl):
         self.website.append(Website({'websiteUrl': websiteUrl}))
+
+    def get_tags(self):
+        from hatchbuck.api import HatchbuckAPI
+        updated_tags = HatchbuckAPI(self.api_key).get_tags(self.contactId)
+        if updated_tags != None:
+            self.tags = updated_tags
+            return self.tags
+        else:
+            return None
+
+    def add_tags(self, tags):
+        from hatchbuck.api import HatchbuckAPI
+        return HatchbuckAPI(self.api_key).add_tags(self.contactId, tags)
+
+    def delete_tags(self, tags):
+        from hatchbuck.api import HatchbuckAPI
+        return HatchbuckAPI(self.api_key).delete_tags(self.contactId, tags)
 
     def save(self):
         from hatchbuck.api import HatchbuckAPI
