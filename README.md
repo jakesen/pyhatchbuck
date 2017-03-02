@@ -19,6 +19,14 @@ The API version supported is v1. API documentation can be found [here][hatchbuck
 [hatchbuck]: http://www.hatchbuck.com
 [hatchbuck-api-docs]: https://hatchbuck.freshdesk.com/support/solutions/articles/5000578765-hatchbuck-api-documentation
 
+## Installation
+
+The easiest way to install pyhatchbuck is with pip:
+
+```sh
+$ pip install pyhatchbuck
+```
+
 ## Basic Usage
 
 ```py
