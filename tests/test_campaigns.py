@@ -81,5 +81,18 @@ class TestCampaigns(unittest.TestCase):
         success = contact.stop_campaigns([{'name': 'Brochure Request Followup'}])
         self.assertEqual(success, True)
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_stop_contact_campaigns_by_email.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_stop_contact_campaigns_by_email(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_email = "jill.smith@pyhatchbuck.net"
+        campaigns = [
+            {'id': 'eVFMdnphWjZSR2UtUllRYlRDYVpOMTd1aDMyZDhDSV9haExIcmpqdU85dzE1'}
+        ]
+        success = hatchbuck.stop_campaigns(contact_email, campaigns)
+        self.assertEqual(success, True)
+
 if __name__ == '__main__':
     unittest.main()
