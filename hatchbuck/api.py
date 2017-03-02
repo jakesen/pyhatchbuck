@@ -115,3 +115,15 @@ class HatchbuckAPI(object):
             raise HatchbuckInvalidAPIKeyError(response)
         else:
             return False
+
+    def get_campaigns(self, contact_id_or_email):
+        from hatchbuck.primatives import ApiObjectList
+        from hatchbuck.objects import Campaign
+        request_url = BASE_URL+'contact/'+contact_id_or_email+'/Campaign?api_key='+self.api_key
+        response = requests.get(request_url)
+        if response.status_code == 200:
+            return ApiObjectList(Campaign, json.loads(response.content))
+        elif response.status_code == 401:
+            raise HatchbuckInvalidAPIKeyError()
+        else:
+            return None

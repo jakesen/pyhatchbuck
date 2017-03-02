@@ -12,7 +12,9 @@ class Address(ApiObject):
     typeId = ApiStringAttribute()
 
 class Campaign(ApiObject):
-    pass
+    id = ApiStringAttribute()
+    name = ApiStringAttribute()
+    step = ApiIntegerAttribute()
 
 class CustomField(ApiObject):
     field = ApiStringAttribute()
@@ -153,6 +155,15 @@ class Contact(ApiObject):
     def delete_tags(self, tags):
         from hatchbuck.api import HatchbuckAPI
         return HatchbuckAPI(self.api_key).delete_tags(self.contactId, tags)
+
+    def get_campaigns(self):
+        from hatchbuck.api import HatchbuckAPI
+        updated_campaigns = HatchbuckAPI(self.api_key).get_campaigns(self.contactId)
+        if updated_campaigns != None:
+            self.campaigns = updated_campaigns
+            return self.campaigns
+        else:
+            return None
 
     def save(self):
         from hatchbuck.api import HatchbuckAPI
