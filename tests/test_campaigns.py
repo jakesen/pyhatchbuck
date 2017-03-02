@@ -57,6 +57,19 @@ class TestCampaigns(unittest.TestCase):
         self.assertEqual(contact.campaigns[1].id, "958651")
 
     @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_start_contact_campaigns_by_email.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_start_contact_campaigns_by_email(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_email = "jill.smith@pyhatchbuck.net"
+        campaigns = [
+            {'id': 'b1BFUnM1Unh0MDVVOVJEWUc1d0pTM0pUSVY4QS0xOW5GRHRsS05DXzNXazE1'}
+        ]
+        success = hatchbuck.start_campaigns(contact_email, campaigns)
+        self.assertEqual(success, True)
+
+    @vcr.use_cassette(
         'tests/fixtures/cassettes/test_stop_contact_campaigns.yml',
         filter_query_parameters=['api_key']
     )
