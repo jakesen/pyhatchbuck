@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='pyhatchbuck',
-    version='0.1dev',
+    version='0.1',
     description='Python library for Hatchbuck API',
     url='https://github.com/jakesen/pyhatchbuck',
     author='Jacob Senecal',
