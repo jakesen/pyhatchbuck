@@ -2,7 +2,7 @@ import os
 import vcr
 import unittest
 
-from hatchbuck.api import HatchbuckAPI, HatchbuckInvalidAPIKeyError
+from hatchbuck.api import HatchbuckAPI, HatchbuckAPIAuthenticationError
 
 class TestSearchContacts(unittest.TestCase):
 
@@ -70,7 +70,7 @@ class TestSearchContacts(unittest.TestCase):
     def test_invalid_api_key_raises_exception(self):
         hatchbuck = HatchbuckAPI("ABC123")
         self.assertRaises(
-            HatchbuckInvalidAPIKeyError,
+            HatchbuckAPIAuthenticationError,
             hatchbuck.search_contacts,
             emails=["jack@pyhatchbuck.net"]
         )

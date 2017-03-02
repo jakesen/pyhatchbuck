@@ -9,8 +9,8 @@ class HatchbuckAPIError(Exception):
     """Base class for hatchbuck api exceptions."""
     pass
 
-class HatchbuckInvalidAPIKeyError(HatchbuckAPIError):
-    """Exception raised if the api key is rejected by hatchbuck."""
+class HatchbuckAPIAuthenticationError(HatchbuckAPIError):
+    """Exception raised if hatchbuck authentication fails."""
 
     def __init__(self, response):
         response_data = json.loads(response.content)
@@ -41,7 +41,7 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return [Contact(self.api_key, j) for j in json.loads(response.content)]
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
 
@@ -56,7 +56,7 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return json.loads(response.content)
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
 
@@ -68,7 +68,7 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return json.loads(response.content)
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
 
@@ -80,7 +80,7 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return ApiObjectList(Tag, json.loads(response.content))
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
 
@@ -96,7 +96,7 @@ class HatchbuckAPI(object):
         if response.status_code == 201:
             return True
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return False
 
@@ -112,7 +112,7 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return True
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError(response)
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return False
 
@@ -124,6 +124,6 @@ class HatchbuckAPI(object):
         if response.status_code == 200:
             return ApiObjectList(Campaign, json.loads(response.content))
         elif response.status_code == 401:
-            raise HatchbuckInvalidAPIKeyError()
+            raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
