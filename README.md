@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/jakesen/pyhatchbuck.svg?style=svg)](https://circleci.com/gh/jakesen/pyhatchbuck)
 
-This library is intended to provide a full python wrapper for the [Hatchbuck][hatchbuck] API. When finished it should provide access to all the Hatchbuck API functions:
+This library is intended to provide a full python wrapper for the [Hatchbuck][hatchbuck] API. It provides access to all the Hatchbuck API functions:
 
 * search contacts
 * add contact
@@ -19,7 +19,7 @@ The API version supported is v1. API documentation can be found [here][hatchbuck
 [hatchbuck]: http://www.hatchbuck.com
 [hatchbuck-api-docs]: https://hatchbuck.freshdesk.com/support/solutions/articles/5000578765-hatchbuck-api-documentation
 
-## Usage (so far)
+## Basic Usage
 
 ```py
 from hatchbuck.api import HatchbuckAPI
@@ -104,44 +104,68 @@ tags = hatchbuck.get_tags("alex@pyhatchbuck.net")
 
 ## Adding Tags
 
-You can add tags by email or by contact id. You must give a list of tags to add with each tag's name or id.
+You can add tags by email or by contact id. You must give a list of tags to add with each tag's name or id. The `add_tags` method will return `True` if the tags are added successfully, `False` otherwise.
 
 ```py
 contact = hatchbuck.search_contacts(contactId=contact_id)[0]
-tags = contact.add_tags([{'name': "New Tag"}])
+success = contact.add_tags([{'name': "New Tag"}])
 # or
-tags = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'name': "New Tag"}])
+success = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'name': "New Tag"}])
 # or
-tags = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+success = hatchbuck.add_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
 ```
 
 ## Deleting Tags
 
-You can delete tags by email or by contact id. You must give a list of tags to delete with each tag's name or id.
+You can delete tags by email or by contact id. You must give a list of tags to delete with each tag's name or id. The `delete_tags` method will return `True` if the tags are deleted successfully, `False` otherwise.
 
 ```py
 contact = hatchbuck.search_contacts(contactId=contact_id)[0]
-tags = contact.delete_tags([{'name': "Old Tag"}])
+success = contact.delete_tags([{'name': "Old Tag"}])
 # or
-tags = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'name': "Old Tag"}])
+success = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'name': "Old Tag"}])
 # or
-tags = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+success = hatchbuck.delete_tags("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
 ```
 
+## Getting Campaigns
 
-## TODOs
+You can get active campaigns by email or by contact id.
 
-- [x] Search for contacts by email
-- [x] VCR for tests
-- [x] Search with other attributes
-- [x] Add contact
-- [x] Update contact
-- [x] Get tags
-- [x] Add tags
-- [x] Delete tags
-- [ ] Get campaign
-- [ ] Start campaign
-- [ ] Stop campaign
-- [ ] More complete documentation
-- [ ] Publish for PIP
-- [ ] Docstrings
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+campaigns = contact.get_campaigns()
+# or
+campaigns = hatchbuck.get_campaigns("alex@pyhatchbuck.net")
+
+>>> print campaigns[0].name
+"Campaign Name"
+>>> print campaigns[0].id
+"ABCDEF123456"
+```
+
+## Starting Campaigns
+
+You can start campaigns by email or by contact id. You must give a list of campaigns to start with each campaign's name or id. The `start_campaigns` method will return `True` if the campaigns are started successfully, `False` otherwise.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+success = contact.start_campaigns([{'name': "New Campaign"}])
+# or
+success = hatchbuck.start_campaigns("alex@pyhatchbuck.net", [{'name': "New Campaign"}])
+# or
+success = hatchbuck.start_campaigns("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+```
+
+## Stopping Campaigns
+
+You can delete tags by email or by contact id. You must give a list of tags to delete with each tag's name or id. The `stop_campaigns` method will return `True` if the campaigns are stopped successfully, `False` otherwise.
+
+```py
+contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+success = contact.stop_campaigns([{'name': "Old Campaign"}])
+# or
+success = hatchbuck.stop_campaigns("alex@pyhatchbuck.net", [{'name': "Old Campaign"}])
+# or
+success = hatchbuck.stop_campaigns("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+```

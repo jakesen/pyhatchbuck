@@ -1,0 +1,29 @@
+interactions:
+- request:
+    body: !!python/unicode '{"emails": [{"address": "jack@pyhatchbuck.net"}]}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['49']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact/search
+  response:
+    body: {string: !!python/unicode '{"Message":"Api key is not valid."}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['35']
+      content-type: [application/json; charset=utf-8]
+      date: ['Thu, 02 Mar 2017 14:20:45 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 401, message: Unauthorized}
+version: 1

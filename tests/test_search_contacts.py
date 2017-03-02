@@ -2,7 +2,7 @@ import os
 import vcr
 import unittest
 
-from hatchbuck.api import HatchbuckAPI
+from hatchbuck.api import HatchbuckAPI, HatchbuckAPIAuthenticationError
 
 class TestSearchContacts(unittest.TestCase):
 
@@ -62,6 +62,18 @@ class TestSearchContacts(unittest.TestCase):
         self.assertEqual(len(contacts), 1)
         self.assertEqual(contacts[0].firstName, "Jack")
         self.assertEqual(contacts[0].lastName, "Spratt")
+
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_invalid_api_key_raises_exception.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_invalid_api_key_raises_exception(self):
+        hatchbuck = HatchbuckAPI("ABC123")
+        self.assertRaises(
+            HatchbuckAPIAuthenticationError,
+            hatchbuck.search_contacts,
+            emails=["jack@pyhatchbuck.net"]
+        )
 
 if __name__ == '__main__':
     unittest.main()
