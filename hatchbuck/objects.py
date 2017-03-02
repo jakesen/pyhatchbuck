@@ -165,6 +165,10 @@ class Contact(ApiObject):
         else:
             return None
 
+    def start_campaigns(self, campaigns):
+        from hatchbuck.api import HatchbuckAPI
+        return HatchbuckAPI(self.api_key).start_campaigns(self.contactId, campaigns)
+
     def save(self):
         from hatchbuck.api import HatchbuckAPI
         new_data = None

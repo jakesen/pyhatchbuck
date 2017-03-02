@@ -127,3 +127,19 @@ class HatchbuckAPI(object):
             raise HatchbuckAPIAuthenticationError(response)
         else:
             return None
+
+    def start_campaigns(self, contact_id_or_email, campaigns):
+        from hatchbuck.primatives import ApiObjectList
+        from hatchbuck.objects import Campaign
+        if not isinstance(campaigns, ApiObjectList):
+            campaigns = ApiObjectList(Campaign, campaigns)
+        data = campaigns.as_dict_list()
+        request_url = BASE_URL+'contact/'+contact_id_or_email+'/Campaign?api_key='+self.api_key
+        response = requests.post(request_url, json=data)
+
+        if response.status_code == 201:
+            return True
+        elif response.status_code == 401:
+            raise HatchbuckAPIAuthenticationError(response)
+        else:
+            return False
