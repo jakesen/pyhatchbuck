@@ -37,5 +37,24 @@ class TestCampaigns(unittest.TestCase):
         self.assertEqual(campaigns[0].step, 0)
         self.assertEqual(campaigns[0].id, "b1BFUnM1Unh0MDVVOVJEWUc1d0pTM0pUSVY4QS0xOW5GRHRsS05DXzNXazE1")
 
+    @vcr.use_cassette(
+        'tests/fixtures/cassettes/test_start_contact_campaigns.yml',
+        filter_query_parameters=['api_key']
+    )
+    def test_start_contact_campaigns(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact_id = "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.contactId, contact_id)
+        success = contact.start_campaigns([{'name': 'Trial Request Followup'}])
+        self.assertEqual(success, True)
+        contact = hatchbuck.search_contacts(contactId=contact_id)[0]
+        self.assertEqual(contact.campaigns[0].name, "Brochure Request Followup")
+        self.assertEqual(contact.campaigns[0].step, 0)
+        self.assertEqual(contact.campaigns[0].id, "958650")
+        self.assertEqual(contact.campaigns[1].name, "Trial Request Followup")
+        self.assertEqual(contact.campaigns[1].step, 0)
+        self.assertEqual(contact.campaigns[1].id, "958651")
+
 if __name__ == '__main__':
     unittest.main()
