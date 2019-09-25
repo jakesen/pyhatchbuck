@@ -17,7 +17,8 @@ class Campaign(ApiObject):
     step = ApiIntegerAttribute()
 
 class CustomField(ApiObject):
-    field = ApiStringAttribute()
+    name = ApiStringAttribute()
+    type = ApiStringAttribute()
     value = ApiStringAttribute()
     id = ApiStringAttribute()
 
