@@ -1,0 +1,57 @@
+interactions:
+- request:
+    body: !!python/unicode '{"contactId": "d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['77']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact/search
+  response:
+    body: {string: !!python/unicode '[{"contactId":"d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1","firstName":"Jill","lastName":"Smith","emails":[{"id":"SXU4LVZRWkFzM3UtMnZ4UGtrRTJtMmgyQWV2dnpUV19tNjFBaVFqRnk2QTE1","address":"jill.smith@pyhatchbuck.net","type":"Work","typeId":"VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1"}],"phones":[],"tags":[{"name":"Possible
+        Client","score":1,"id":"WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1"}],"campaigns":[],"status":{"name":"Customer","id":"dGlKTUR2LXlVVlNmQUkwb1Njbjlhd1pSVDFsNXB5UWFESFdnZlhaN3BOYzE1"},"salesRep":{"username":"jakesen","id":"Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},"addresses":[],"timezone":"Central
+        Standard Time","socialNetworks":[],"instantMessaging":[],"website":[],"referredBy":"","customFields":[],"subscribed":true}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['819']
+      content-type: [application/json; charset=utf-8]
+      date: ['Mon, 20 Feb 2017 15:01:16 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.12.4]
+    method: GET
+    uri: https://api.hatchbuck.com/api/v1/contact/d1F4Tm1tcUxVRmdFQmVIT3lhVjNpaUtxamprakk5S3JIUGRmVWtHUXJaRTE1/Tags
+  response:
+    body: {string: !!python/unicode '[{"name":"Possible Client","score":1,"id":"WjFmbDktWGpDVV9OMEtHdjY0Mm83ZVJUT0w5UDVKRTNmN0NRcXdrSGhMMDE1"}]'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['106']
+      content-type: [application/json; charset=utf-8]
+      date: ['Mon, 20 Feb 2017 15:01:16 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+version: 1
+
