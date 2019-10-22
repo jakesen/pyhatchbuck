@@ -27,6 +27,33 @@ The easiest way to install pyhatchbuck is with pip:
 $ pip install pyhatchbuck
 ```
 
+## Set up
+
+### Requirements
+- Install [poetry][poetry].
+
+[poetry]: https://poetry.eustace.io/
+
+### Development
+
+Install dependencies:
+
+```
+poetry install
+```
+
+Build the library:
+
+```
+poetry run python setup.py install
+```
+
+Test:
+
+```
+poetry run nosetests -v
+```
+
 ## Basic Usage
 
 ```py
@@ -90,6 +117,16 @@ Calling save to update an existing contact will return `True` if successful, and
 contact = hatchbuck.search_contacts(contactId=contact_id)[0]
 contact.emails[0].address = "alex@pyhatchbuck.net"
 contact.phones[0].number = "555-555-5555"
+#...ETC...
+success = contact.save()
+```
+
+## Add custom fields
+You can append custom fields using the `add_customField` method:
+
+```py
+contact.add_customField(name='Company Size', value=42)
+contact.add_customField(name='Gender', value='Female')
 #...ETC...
 success = contact.save()
 ```

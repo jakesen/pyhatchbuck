@@ -23,8 +23,7 @@ class TestCustomFields(unittest.TestCase):
         self.assertEqual(contact.contactId, CONTACT_ID)
         customFields = contact.customFields
         self.assertEqual(len(customFields), 2)
-        self.assertEqual(customFields[0].name, "Custom1")
-        self.assertEqual(customFields[0].type, "Integer")
+        self.assertEqual(customFields[0].name, "Company Size")
         self.assertEqual(customFields[0].value, "42")
 
     @vcr.use_cassette(
@@ -37,3 +36,18 @@ class TestCustomFields(unittest.TestCase):
         self.assertEqual(contact.contactId, CONTACT_ID)
         customFields = contact.customFields
         self.assertEqual(len(customFields), 0)
+
+    @vcr.use_cassette(
+      'tests/fixtures/cassettes/test_add_customFields.yml',
+      filter_query_parameters=['api_key']
+    )
+    def test_add_customFields(self):
+        hatchbuck = HatchbuckAPI(self.test_api_key)
+        contact = hatchbuck.new_contact()
+        contact.add_customField(name='Company Size', value=42)
+        contact.add_customField(name='Gender', value='Female')
+        success = contact.save()
+        self.assertEqual(success, True)
+        self.assertEqual(len(contact.customFields), 2)
+        self.assertEqual(contact.customFields[0].name, "Company Size")
+        self.assertEqual(contact.customFields[0].value, "42")

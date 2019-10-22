@@ -18,7 +18,6 @@ class Campaign(ApiObject):
 
 class CustomField(ApiObject):
     name = ApiStringAttribute()
-    type = ApiStringAttribute()
     value = ApiStringAttribute()
     id = ApiStringAttribute()
 
@@ -108,6 +107,10 @@ class Contact(ApiObject):
 
     def add_email(self, address, type):
         self.emails.append(Email({'address': address, 'type': type}))
+
+    def add_customField(self, name, value):
+        self.customFields.append(
+            CustomField({'name': name, 'value': value}))
 
     def set_status(self, name):
         self.status = Status({'name': name})
