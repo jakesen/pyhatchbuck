@@ -108,7 +108,7 @@ class Contact(ApiObject):
     def add_email(self, address, type):
         self.emails.append(Email({'address': address, 'type': type}))
 
-    def add_customField(self, name, value):
+    def add_custom_field(self, name, value):
         self.customFields.append(
             CustomField({'name': name, 'value': value}))
 

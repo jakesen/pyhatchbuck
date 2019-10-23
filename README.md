@@ -122,11 +122,11 @@ success = contact.save()
 ```
 
 ## Add custom fields
-You can append custom fields using the `add_customField` method:
+You can append custom fields using the `add_custom_field` method:
 
 ```py
-contact.add_customField(name='Company Size', value=42)
-contact.add_customField(name='Gender', value='Female')
+contact.add_custom_field(name='Company Size', value=42)
+contact.add_custom_field(name='Gender', value='Female')
 #...ETC...
 success = contact.save()
 ```

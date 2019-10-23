@@ -38,14 +38,14 @@ class TestCustomFields(unittest.TestCase):
         self.assertEqual(len(customFields), 0)
 
     @vcr.use_cassette(
-      'tests/fixtures/cassettes/test_add_customFields.yml',
+      'tests/fixtures/cassettes/test_add_custom_fields.yml',
       filter_query_parameters=['api_key']
     )
-    def test_add_customFields(self):
+    def test_add_custom_fields(self):
         hatchbuck = HatchbuckAPI(self.test_api_key)
         contact = hatchbuck.new_contact()
-        contact.add_customField(name='Company Size', value=42)
-        contact.add_customField(name='Gender', value='Female')
+        contact.add_custom_field(name='Company Size', value=42)
+        contact.add_custom_field(name='Gender', value='Female')
         success = contact.save()
         self.assertEqual(success, True)
         self.assertEqual(len(contact.customFields), 2)
