@@ -1,0 +1,43 @@
+interactions:
+- request:
+    body: !!python/unicode '{"website": [{"websiteUrl": "www.pyhatchbuck.net"}], "status":
+      {"name": "Customer"}, "addresses": [{"city": "Anytown", "zip": "55555", "country":
+      "United States", "state": "AL", "street": "123 Main Street", "type": "Work"}],
+      "firstName": "Alex", "title": "Account Manager", "sourceId": "UnVvT0c0dmxsVVdFYUR1MUZIOTVJeDFXSGxudTBaUG5uZ1QxdVo1aElUVTE1",
+      "phones": [{"type": "Work", "number": "555-555-5555"}], "company": "ACME Incorporated",
+      "lastName": "Smith", "socialNetworks": [{"type": "twitter", "address": "@pyhatchbuck"}],
+      "customFields":[{"name": "Company Size", "value": "42"}, {"name": "Gender", "value": "Female"}],
+      "instantMessaging": [{"type": "skype", "address": "alex.pyhatchbuck"}], "timezone":
+      "Pacific Standard Time", "emails": [{"type": "Work", "address": "alex@pyhatchbuck.net"}],
+      "temperature": {"id": "QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1"}}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['787']
+      Content-Type: [application/json]
+      User-Agent: [python-requests/2.12.4]
+    method: POST
+    uri: https://api.hatchbuck.com/api/v1/contact
+  response:
+    body: {string: !!python/unicode '{"contactId":"TWlQd3RkSUNKc2h5dXg3UWtFbkZGZE1QZ3R4d0tUM3N0TjI0bDRUMS03MDE1","firstName":"Alex","lastName":"Smith","title":"Account
+        Manager","company":"ACME Incorporated","emails":[{"id":"OENJMnh6akpHajR4Z3c4SWN0LW01dUIyc3FYZGlfaXdPaWNXQ05ycERUczE1","address":"alex@pyhatchbuck.net","type":"Work","typeId":"VmhlQU1pZVJSUFFJSjZfMHRmT1laUmwtT0FMNW9hbnBuZHd2Q1JTdE0tYzE1"}],"phones":[{"id":"a21NRHpOay1jZVdGYUZudEJFZFNxRzVJQ0xPRThsWDcxTERtaWR0S0FTdzE1","number":"555-555-5555","type":"Work","typeId":"QTBncHV0dndnaGNnRVMzLTR0SGtFRmRvZjdqNm4zcVphQi1XX1Z2MXVtRTE1"}],"tags":[],"campaigns":[],"status":{"name":"Customer","id":"dGlKTUR2LXlVVlNmQUkwb1Njbjlhd1pSVDFsNXB5UWFESFdnZlhaN3BOYzE1"},"temperature":{"name":"Hot","id":"QzlHRFRCXzBNN2s3SlppdlBfT2ttVklsRWwzVTFOM3d6SWNJV0xzZkFHODE1"},"salesRep":{"username":"jakesen","id":"Vzl1R2pZSGt0cDNOOGl5X2ZBRGRxWGxnRWtCaXJaQnFmekVubHZYcXRzMDE1"},"addresses":[{"id":"S1dUa2c1UDdEeFpiQk5UMFNBZXJfaWNvbkh0N1h6N05pWkNBTzNJUzFERTE1","street":"123
+        Main Street","city":"Anytown","state":"AL","zip":"55555","countryId":"LS1qcWZaeVFGdkRXNnZpcTlkclVORHNLMTVnMWhObkFQVnItdmM0RTlTczE1","country":"United
+        States","type":"Work","typeId":"SjFENlU0Y2s2RDFpM0NKWEExRmVvSjZ4T3NJMG5pLWNYZjRseDBSaTVfVTE1"}],"timezone":"Pacific
+        Standard Time","socialNetworks":[{"id":"dGNZT0xWVVJSQlBKOWxLdnBlZS01MWdUQkxadk1XM2p1cG8yRWFhNjAyWTE1","address":"@pyhatchbuck","type":"Twitter","typeId":"ZGRlMHpBaXY3M05YUGc4a0pIY3lRdUFKN1JYaDd2VEphbzhSRkdzM2x4bzE1"}],"instantMessaging":[{"id":"OWdYcHkzcVBwRE4zZEtzTEhJbFc4SVpLTm91WjJWd2tQUWxXcm9TdjdHazE1","address":"alex.pyhatchbuck","type":"Skype","typeId":"MFJ4cjFxWllHLUtyU3hmczQ0a2otV1NnQUhkWGIyNlF1ZUpKVEZJeGQ4ODE1"}],"website":[{"websiteUrl":"www.pyhatchbuck.net","id":"VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1"}],"referredBy":"","customFields":[{"id":"VC1Hcl9yeXVucjFDdVViRkY4RXA2UzNkcnVBeFQtSEhmUkdIWEZPdnp5STE1", "name": "Company Size", "value": "42"}, {"id":"VemIVCtZBUckcdSdRD1XTRzFhu9EcSVkE2EUd4jXVPWFliHYpynk1ne5VAQN", "name": "Gender", "value": "Female"}],"subscribed":true}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET, POST, OPTIONS, PUT, DELETE']
+      access-control-allow-origin: ['http://localhost:9000']
+      cache-control: [no-cache]
+      content-length: ['1838']
+      content-type: [application/json; charset=utf-8]
+      date: ['Sat, 18 Feb 2017 16:27:44 GMT']
+      expires: ['-1']
+      pragma: [no-cache]
+      server: [Microsoft-IIS/7.5]
+      x-aspnet-version: [4.0.30319]
+      x-powered-by: [ASP.NET]
+    status: {code: 200, message: OK}
+version: 1
+
