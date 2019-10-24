@@ -4,6 +4,9 @@ version = "0.2"
 description = "Python library for Hatchbuck API"
 authors = ["Jacob Senecal <jacob.senecal@gmail.com>"]
 license = "MIT"
+packages = [
+    { include = "hatchbuck" }
+]
 
 [tool.poetry.dependencies]
 python = "^2.7"
