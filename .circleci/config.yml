@@ -12,7 +12,7 @@ jobs:
 
   build-py3:
     docker:
-      - image: circleci/python
+      - image: circleci/python:3.7
     steps:
       - checkout
       - run: pip install poetry --user
