@@ -1,9 +1,11 @@
+from __future__ import absolute_import
 import os
 import vcr
 import unittest
 
 from hatchbuck.api import HatchbuckAPI
 from hatchbuck.objects import Contact
+
 
 class TestAddContact(unittest.TestCase):
 

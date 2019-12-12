@@ -6,7 +6,7 @@ class ApiObject(object):
         self.__initialised = True
 
     def load_dict(self, json_data):
-        for k, v in json_data.iteritems():
+        for k, v in list(json_data.items()):
             if hasattr(self, k):
                 object_attr = getattr(self, k, None)
                 if isinstance(object_attr, ApiObjectList):
@@ -22,7 +22,7 @@ class ApiObject(object):
 
     def as_dict(self):
         output = {}
-        for key in self.__class__.__dict__.keys():
+        for key in list(self.__class__.__dict__.keys()):
             object_attr = getattr(self, key)
             value = None
             if isinstance(object_attr, ApiObjectList):
@@ -38,7 +38,7 @@ class ApiObject(object):
         return output
 
     def __setattr__(self, name, value):
-        if self.__dict__.has_key('_ApiObject__initialised'):
+        if '_ApiObject__initialised' in self.__dict__:
             object_attr = getattr(self, name, None)
             if isinstance(object_attr, ApiObjectList) and not isinstance(value, ApiObjectList):
                 super(ApiObject, self).__setattr__(name, ApiObjectList(value))
@@ -57,15 +57,18 @@ class ApiObject(object):
 class ApiStringAttribute(str):
 
     def __init__(self, value=None):
-        super(ApiStringAttribute, self).__init__(value)
+        str.__init__(value)
+
 
 class ApiIntegerAttribute(int):
 
     def __init__(self, value=None):
-        super(ApiIntegerAttribute, self).__init__(value)
+        int.__init__(value)
+
 
 class ApiBooleanAttribute(object):
     pass
+
 
 class ApiObjectList(list):
 
