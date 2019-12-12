@@ -1,8 +1,18 @@
 version: 2
 jobs:
-  build:
+  build-py2:
     docker:
       - image: circleci/python:2.7
+    steps:
+      - checkout
+      - run: pip install poetry --user
+      - run: poetry install
+      - run: poetry run python setup.py install
+      - run: poetry run nosetests -v
+
+  build-py3:
+    docker:
+      - image: circleci/python
     steps:
       - checkout
       - run: pip install poetry --user
