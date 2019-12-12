@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from hatchbuck.primatives import ApiObject, ApiObjectList, ApiIntegerAttribute
 from hatchbuck.primatives import ApiStringAttribute, ApiBooleanAttribute
 
