@@ -9,7 +9,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^2.7"
+python = "^2.7 || ^3.7"
 requests = "^2.22"
 
 [tool.poetry.dev-dependencies]
