@@ -27,33 +27,6 @@ The easiest way to install pyhatchbuck is with pip:
 $ pip install pyhatchbuck
 ```
 
-## Set up
-
-### Requirements
-- Install [poetry][poetry].
-
-[poetry]: https://poetry.eustace.io/
-
-### Development
-
-Install dependencies:
-
-```
-poetry install
-```
-
-Build the library:
-
-```
-poetry run python setup.py install
-```
-
-Test:
-
-```
-poetry run nosetests -v
-```
-
 ## Basic Usage
 
 ```py
@@ -213,4 +186,33 @@ success = contact.stop_campaigns([{'name': "Old Campaign"}])
 success = hatchbuck.stop_campaigns("alex@pyhatchbuck.net", [{'name': "Old Campaign"}])
 # or
 success = hatchbuck.stop_campaigns("alex@pyhatchbuck.net", [{'id': "ABCDEF123456"}])
+```
+
+## Building and Testing Locally
+
+If you want to work on the pyhatchbuck project locally, you can clone this repo or a fork and setup your local environment with the following instructions.
+
+### Requirements
+- Install [poetry][poetry].
+
+[poetry]: https://poetry.eustace.io/
+
+### Commands
+
+Install dependencies:
+
+```
+poetry install
+```
+
+Build the library:
+
+```
+poetry run python setup.py install
+```
+
+Test:
+
+```
+poetry run nosetests -v
 ```
